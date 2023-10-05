@@ -12,7 +12,7 @@ const router = express.Router()
 router
     .route('/')
     .post([authenticateUser], createBook)
-    .get([authenticateUser, authorizePermissions('admin')],getAllBooks);
+    .get([authenticateUser],getAllBooks);
     
 router
     .route('/:id')
