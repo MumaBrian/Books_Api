@@ -41,10 +41,11 @@ const updateBook = async (req, res) => {
 const deleteBook = async (req, res) => {
     const { id: bookId } = req.params
     const book = await Book.findOne({ _id: bookId })
+    console.log("book:",book)
     if (!book) {
         throw new CustomError.NotFoundError(`No book with id ${bookId}`)
     }
-    await book.remove()
+    await book.deleteOne()
     res.status(StatusCodes.OK).json({ msg: 'Book removed successfully' })
 
 }

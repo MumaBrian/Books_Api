@@ -15,10 +15,10 @@ const mongoSanitize = require('express-mongo-sanitize');
 const port = process.env.PORT || 3000
 
 // database
-const connectDB = require('./db/connect');
+const connectDB = require('./src/db/connect');
 
 app.use(cors());
-app.use(xss());
+// app.use(xss());
 app.use(mongoSanitize());
 
 
@@ -49,4 +49,3 @@ const start = async () => {
 }
 start();
 
-console.log('E-Commerce API');

@@ -4,9 +4,16 @@ const BookSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Please provide title']
     },
+    description: {
+        type: String,
+    },
     author: {
         type: String,
         required: [true, 'Please enter your name']
+    },
+    publishedDate: {
+        type: Date,
+        default: Date.now, 
     },
 },
     { timestamps: true }
