@@ -11,6 +11,10 @@ const bookRouter = require('./src/routes/bookRoutes')
 const cookieParser = require('cookie-parser')
 const cors = require('cors');
 const mongoSanitize = require('express-mongo-sanitize');
+const swaggerUi = require('swagger-ui-express')
+const YAML = require('yamljs')
+const swaggerDocument = YAML.load('./swagger.yaml')
+
 
 const port = process.env.PORT || 5000
 
@@ -33,6 +37,9 @@ app.use(express.static('./src/public'))
 app.use('/auth', authRouter)
 app.use('/users', userRouter)
 app.use('/books', bookRouter)
+
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)

@@ -1,0 +1,511 @@
+openapi: 3.0.0
+info:
+  title: Book_Api
+  contact: {}
+  version: '1.0'
+servers:
+- url: http://localhost:5000
+  variables: {}
+paths:
+  /auth/login:
+    post:
+      tags:
+      - Auth
+      summary: login
+      operationId: login
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/loginrequest'
+              - example:
+                  email: gachettela2@gmail.com
+                  password: mumauser
+            example:
+              email: gachettela2@gmail.com
+              password: mumauser
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /auth/register:
+    post:
+      tags:
+      - Auth
+      summary: register
+      operationId: register
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/registerrequest'
+              - example:
+                  name: okay
+                  email: okay@gmail.com
+                  password: mumauser
+            example:
+              name: okay
+              email: okay@gmail.com
+              password: mumauser
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /auth/logout:
+    delete:
+      tags:
+      - Auth
+      summary: logout
+      operationId: logout
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /auth/verify-email:
+    post:
+      tags:
+      - Auth
+      summary: verifyEmail
+      operationId: verifyEmail
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/verifyEmailRequest'
+              - example:
+                  email: muma@gmail.com
+                  verificationToken: '*******'
+            example:
+              email: muma@gmail.com
+              verificationToken: '*******'
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /auth/reset-password:
+    post:
+      tags:
+      - Auth
+      summary: resetPassword
+      operationId: resetPassword
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/resetPasswordRequest'
+              - example:
+                  token: '******'
+                  email: okay@gmail.com
+                  password: mumauser
+            example:
+              token: '******'
+              email: okay@gmail.com
+              password: mumauser
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /auth/forgot-password:
+    post:
+      tags:
+      - Auth
+      summary: forgotPassword
+      operationId: forgotPassword
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/forgotPasswordRequest'
+              - example:
+                  email: string
+            example:
+              email: string
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /auth/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The user ID    
+    delete:
+      tags:
+      - Auth
+      summary: delete
+      operationId: delete
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /users:
+    get:
+      tags:
+      - User
+      summary: getAllUsers
+      operationId: getAllUsers
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /users/current-user:
+    get:
+      tags:
+      - User
+      summary: showCurrentUser
+      operationId: showCurrentUser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /users/update-user:
+    patch:
+      tags:
+      - User
+      summary: updateUser
+      operationId: updateUser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/updateUserRequest'
+              - example:
+                  email: muma@gmail.com
+                  name: mumab
+            example:
+              email: muma@gmail.com
+              name: mumab
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /users/update-user-password:
+    patch:
+      tags:
+      - User
+      summary: updateUserPassword
+      operationId: updateUserPassword
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/updateUserPasswordRequest'
+              - example:
+                  oldPassword: mumauser
+                  newPassword: mumauser1
+            example:
+              oldPassword: mumauser
+              newPassword: mumauser1
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /users/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The user ID
+    get:
+      tags:
+      - User
+      summary: getSingleUser
+      operationId: getSingleUser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /books:
+    post:
+      tags:
+      - Book
+      summary: createBook
+      operationId: createBook
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/createBookRequest'
+              - example:
+                  title: books
+                  description: bibliography
+                  author: admin
+                  publishedDate: 2023-10-02
+            example:
+              title: books
+              description: bibliography
+              author: admin
+              publishedDate: 2023-10-02
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    get:
+      tags:
+      - Book
+      summary: getAllBooks
+      operationId: getAllBooks
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /books/{id}:
+    parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+        description: The book ID
+    get:
+      tags:
+      - Book
+      summary: getSingleBook
+      operationId: getSingleBook
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+    patch:
+      tags:
+      - Book
+      summary: updateBook
+      operationId: updateBook
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/updateBookRequest'
+              - example:
+                  title: all-books
+                  description: biography
+            example:
+              title: all-books
+              description: biography
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    delete:
+      tags:
+      - Book
+      summary: deleteBook
+      operationId: deleteBook
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+components:
+  schemas:
+    loginrequest:
+      title: loginrequest
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: gachettela2@gmail.com
+        password: mumauser
+    registerrequest:
+      title: registerrequest
+      required:
+      - name
+      - email
+      - password
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        name: okay
+        email: okay@gmail.com
+        password: mumauser
+    verifyEmailRequest:
+      title: verifyEmailRequest
+      required:
+      - email
+      - verificationToken
+      type: object
+      properties:
+        email:
+          type: string
+        verificationToken:
+          type: string
+      example:
+        email: muma@gmail.com
+        verificationToken: '*******'
+    resetPasswordRequest:
+      title: resetPasswordRequest
+      required:
+      - token
+      - email
+      - password
+      type: object
+      properties:
+        token:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        token: '******'
+        email: okay@gmail.com
+        password: mumauser
+    forgotPasswordRequest:
+      title: forgotPasswordRequest
+      required:
+      - email
+      type: object
+      properties:
+        email:
+          type: string
+      example:
+        email: string
+    updateUserRequest:
+      title: updateUserRequest
+      required:
+      - email
+      - name
+      type: object
+      properties:
+        email:
+          type: string
+        name:
+          type: string
+      example:
+        email: muma@gmail.com
+        name: mumab
+    updateUserPasswordRequest:
+      title: updateUserPasswordRequest
+      required:
+      - oldPassword
+      - newPassword
+      type: object
+      properties:
+        oldPassword:
+          type: string
+        newPassword:
+          type: string
+      example:
+        oldPassword: mumauser
+        newPassword: mumauser1
+    createBookRequest:
+      title: createBookRequest
+      required:
+      - title
+      - description
+      - author
+      - publishedDate
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        author:
+          type: string
+        publishedDate:
+          type: string
+      example:
+        title: books
+        description: bibliography
+        author: admin
+        publishedDate: 2023-10-02
+    updateBookRequest:
+      title: updateBookRequest
+      required:
+      - title
+      - description
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+      example:
+        title: all-books
+        description: biography
+security:
+- {}
+tags:
+- name: Auth
+- name: User
+- name: Book

@@ -12,6 +12,10 @@
 
 - `npm start`
 
+##
+http://localhost:5000/ click here to see the various endpoints.
+PS. Since i used jwt authentication with cookies, it can be preferably tested with Postman
+
 ### Environment Variables
 
 - `JWT_SECRET=`
