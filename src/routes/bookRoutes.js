@@ -6,7 +6,7 @@ const {
     deleteBook,
 } = require('../controllers/bookController')
 const express = require('express')
-const { authenticateUser, authorizePermissions } = require('../middleware/authentication')
+const { authenticateUser } = require('../middleware/authentication')
 
 const router = express.Router()
 router

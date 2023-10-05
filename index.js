@@ -12,7 +12,7 @@ const cookieParser = require('cookie-parser')
 const cors = require('cors');
 const mongoSanitize = require('express-mongo-sanitize');
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 5000
 
 // database
 const connectDB = require('./src/db/connect');
@@ -25,7 +25,7 @@ app.use(mongoSanitize());
 //middleware
 app.use(express.json())
 app.use(cookieParser(process.env.JWT_SECRET))
-app.use(express.static('./public'))
+app.use(express.static('./src/public'))
 
 
 //Route
