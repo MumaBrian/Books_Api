@@ -1,7 +1,7 @@
 
 ```
 # Book_API
-
+#Better to test with Postman, i used jwt cookie authentication
 ###### PART 1
 
 ### INSTALL
